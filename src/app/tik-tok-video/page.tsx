@@ -23,7 +23,8 @@ export default function TikTokPage (): JSX.Element {
     videoUrl,
     handleChange,
     handleDownload,
-    loading
+    loading,
+    response
   } = UseDownloadVideo()
 
   return (
@@ -58,6 +59,7 @@ export default function TikTokPage (): JSX.Element {
                 'Baixar'
               )}
         </CustomButton>
+        {JSON.stringify(response?.data?.author?.nickname)}
         <ToastContainer
           position="top-right"
           autoClose={5000}
