@@ -1,8 +1,7 @@
 export interface IRootLayout {
-    children: ReactNode
+  children: ReactNode
 }
 
 export interface CustomHeadProps {
-    title: string
+  title: string
 }
-  

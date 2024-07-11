@@ -16,7 +16,6 @@ export default async function DownloadVideos ({
     dados.append('url', videoUrl)
     dados.append('hd', '1')
 
-    // const apiUrl = `${process.env.NEXT_PUBLIC_API ?? ''}`
     const apiUrl = 'https://tiktok-video-no-watermark2.p.rapidapi.com/'
 
     const requestOptions: RequestInit = {
