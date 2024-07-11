@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { type CustomHeadProps } from '@/types/global'
+
 import icon from '@/../public/favicon.ico'
 
 export default function CustomHead ({ title }: CustomHeadProps): JSX.Element {

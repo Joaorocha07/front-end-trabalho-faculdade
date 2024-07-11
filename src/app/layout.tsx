@@ -1,10 +1,10 @@
 import React from 'react'
 
-import { IRootLayout } from '@/types/global'
+import { type IRootLayout } from '@/types/global'
 
 import '../styles/globals.css'
 
-export default function RootLayout({ children }: IRootLayout): JSX.Element {
+export default function RootLayout ({ children }: IRootLayout): JSX.Element {
   return (
     <html lang="pt-BR">
       <body suppressHydrationWarning={true}>
