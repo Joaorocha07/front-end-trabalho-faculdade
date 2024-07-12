@@ -51,3 +51,7 @@ export interface ITikTokResponse {
     wmplay: string
   }
 }
+
+export interface StyledButtonProps {
+  isSelected: boolean
+}

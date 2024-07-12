@@ -25,6 +25,7 @@ export const ContainerBox = styled(Box)(({ theme }) => ({
 
 export const Title = styled(Typography)(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
+    marginBottom: theme.spacing(2),
     fontSize: '2.0rem',
     fontWeight: 700
   },
@@ -53,6 +54,9 @@ export const CustomButton = styled(Button)(({ theme }) => ({
 }))
 
 export const Image = styled('img')(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+    marginBottom: theme.spacing(10)
+  },
   display: 'flex',
   maxWidth: '100%',
   justifyContent: 'center',

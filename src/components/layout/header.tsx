@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import {
   Logo,
@@ -13,16 +13,25 @@ import {
   Container
 } from '@mui/material'
 
+import { usePathname } from 'next/navigation'
+
 import logo from '@/../public/logo-branco.png'
 
 export default function Header (): JSX.Element {
+  const pathname = usePathname()
   const [selectedButton, setSelectedButton] = useState('')
 
   const handleButtonClick = (button: string): void => {
     setSelectedButton(button)
   }
 
-  console.log(selectedButton)
+  useEffect(() => {
+    if (pathname === '/tik-tok-video') {
+      setSelectedButton('video')
+    } else if (pathname === '/tik-tok-audio') {
+      setSelectedButton('audio')
+    }
+  }, [pathname])
 
   return (
         <AppBar position="static" sx={{ backgroundColor: 'black' }}>
@@ -34,6 +43,7 @@ export default function Header (): JSX.Element {
                         color="inherit"
                         href="/tik-tok-video"
                         onClick={() => { handleButtonClick('video') }}
+                        isSelected={selectedButton === 'video'}
                       >
                         Baixar Vídeo TikTok
                       </StyledButton>
@@ -41,8 +51,9 @@ export default function Header (): JSX.Element {
                         color="inherit"
                         href="/tik-tok-audio"
                         onClick={() => { handleButtonClick('audio') }}
+                        isSelected={selectedButton === 'audio'}
                       >
-                        Baixar TikTok MP3
+                        Baixar audio TikTok
                       </StyledButton>
                     </NavMenu>
                 </StyledToolbar>
