@@ -13,12 +13,16 @@ import {
 } from './components/styles'
 
 import { ToastContainer } from 'react-toastify'
-import { CircularProgress } from '@mui/material'
 import { UseDownloadVideo } from '@/hooks/tik-tok/useDownloadVideo'
+import { CircularProgress, useMediaQuery, useTheme } from '@mui/material'
 
 import tutorial from '@/../public/como-baixar-video-tiktok.png'
+import tutorialMobile from '@/../public/como-baixar-video-mobile.png'
 
 export default function TikTokVideoPage (): JSX.Element {
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
+
   const {
     videoUrl,
     handleChange,
@@ -69,7 +73,7 @@ export default function TikTokVideoPage (): JSX.Element {
           pauseOnHover
           theme="light"
         />
-        <Image src={tutorial.src} alt="Logo" />
+        <Image src={isMobile ? tutorialMobile.src : tutorial.src} alt="Como baixar video tiktok" />
       </ContainerBox>
     </ContentContainer>
   )

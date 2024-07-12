@@ -3,6 +3,9 @@ import { styled } from '@mui/material'
 import InstagramIcon from '@mui/icons-material/Instagram'
 
 export const FooterContainer = styled('footer')(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+    padding: theme.spacing(4.2, 0)
+  },
   backgroundColor: 'black',
   color: '#fff',
   padding: theme.spacing(4, 0),

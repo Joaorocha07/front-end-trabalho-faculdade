@@ -7,6 +7,9 @@ import {
 } from '@mui/material'
 
 export const ContentContainer = styled('div')(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+    minHeight: 'auto'
+  },
   minHeight: 'calc(100vh - 110px - 110px)',
   display: 'flex',
   flexDirection: 'column',
