@@ -4,14 +4,14 @@ import { notifyError, notifySuccess } from '@/components/modals'
 
 import DownloadVideos from '@/services/tik-tok/DownloadVideo'
 
-interface IUseDowloadVideo {
+interface IUseDowloadAudio {
   videoUrl: string
   loading: boolean
   handleDownload: () => Promise<void>
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-export const UseDownloadVideo = (): IUseDowloadVideo => {
+export const UseDownloadAudio = (): IUseDowloadAudio => {
   const [videoUrl, setVideoUrl] = useState('')
   const [isValidUrl, setIsValidUrl] = useState(true)
   const [loading, setLoading] = useState<boolean>(false)
@@ -30,12 +30,12 @@ export const UseDownloadVideo = (): IUseDowloadVideo => {
     setIsValidUrl(validateUrl(url))
   }
 
-  const downloadVideo = async (url: string, data: any): Promise<void> => {
+  const downloadAudio = async (url: string, data: any): Promise<void> => {
     const response = await fetch(url)
     const blob = await response.blob()
 
-    const nameVideo = data?.data.author.nickname.toLowerCase().replace(/\s+/g, '-')
-    const fileName = `${nameVideo}-video-donwload.mp4`
+    const nameAudio = data?.data.music_info.author.toLowerCase().replace(/\s+/g, '-')
+    const fileName = `${nameAudio}-audio-download.mp3`
 
     const anchor = document.createElement('a')
     anchor.href = URL.createObjectURL(blob)
@@ -44,7 +44,7 @@ export const UseDownloadVideo = (): IUseDowloadVideo => {
     anchor.click()
     document.body.removeChild(anchor)
 
-    notifySuccess('Download de vídeo concluído!')
+    notifySuccess('Download de áudio concluído!')
     setLoading(false)
   }
 
@@ -67,10 +67,10 @@ export const UseDownloadVideo = (): IUseDowloadVideo => {
     const response = await DownloadVideos({ videoUrl, jwt })
 
     if (response?.msg === 'success') {
-      const downloadUrl: string = response?.data?.play
-      await downloadVideo(downloadUrl, response)
+      const downloadUrl: string = response?.data.music_info.play
+      await downloadAudio(downloadUrl, response)
     } else {
-      notifyError('Falha ao baixar o vídeo. Tente novamente mais tarde!')
+      notifyError('Falha ao baixar o audio. Tente novamente mais tarde!')
       setLoading(false)
     }
   }

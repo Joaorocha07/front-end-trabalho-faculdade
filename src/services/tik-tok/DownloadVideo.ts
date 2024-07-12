@@ -16,13 +16,16 @@ export default async function DownloadVideos ({
     dados.append('url', videoUrl)
     dados.append('hd', '1')
 
-    const apiUrl = 'https://tiktok-video-no-watermark2.p.rapidapi.com/'
+    const apiUrl = process.env.NEXT_PUBLIC_API ?? ''
+
+    const headersKey = process.env.NEXT_HEADER_KEY ?? ''
+    const headersHost = process.env.NEXT_HEADER_HOST ?? ''
 
     const requestOptions: RequestInit = {
       method: 'POST',
       headers: {
-        'x-rapidapi-key': '5b77832ff7mshe2e6baa11cecd15p12be79jsn83ab7eb40f87',
-        'x-rapidapi-host': 'tiktok-video-no-watermark2.p.rapidapi.com',
+        [headersKey]: process.env.NEXT_JWT_USER ?? '',
+        [headersHost]: process.env.NEXT_JWT_HOST ?? '',
         Authorization: `Bearer ${jwt}`
       },
       body: dados,

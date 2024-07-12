@@ -7,12 +7,12 @@ import CustomHead from '@/app/head'
 import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
 
-export default function TikTokVideoLayout ({
+export default function TikTokAudioLayout ({
   children
 }: IRootLayout): JSX.Element {
   return (
     <>
-      <CustomHead title="Vid Drop - Tik Tok - Vídeo" />
+      <CustomHead title="Vid Drop - Tik Tok - Audio" />
       <Header />
       {children}
       <Footer />

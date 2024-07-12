@@ -14,22 +14,22 @@ import {
 
 import { ToastContainer } from 'react-toastify'
 import { CircularProgress } from '@mui/material'
-import { UseDownloadVideo } from '@/hooks/tik-tok/useDownloadVideo'
+import { UseDownloadAudio } from '@/hooks/tik-tok/useDonwloadAudio'
 
 import tutorial from '@/../public/como-baixar-video-tiktok.png'
 
-export default function TikTokVideoPage (): JSX.Element {
+export default function TikTokAudioPage (): JSX.Element {
   const {
     videoUrl,
     handleChange,
     handleDownload,
     loading
-  } = UseDownloadVideo()
+  } = UseDownloadAudio()
 
   return (
     <ContentContainer>
       <ContainerBox>
-        <Title>Baixar vídeo TikTok</Title>
+        <Title>Baixar audio TikTok</Title>
         <CustomTextField
           fullWidth
           label="Insira o link do vídeo TikTok"
