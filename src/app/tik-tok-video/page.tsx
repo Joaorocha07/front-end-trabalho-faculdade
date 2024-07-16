@@ -14,9 +14,10 @@ import {
 
 import { ToastContainer } from 'react-toastify'
 import { UseDownloadVideo } from '@/hooks/tik-tok/useDownloadVideo'
-import { CircularProgress, useMediaQuery, useTheme } from '@mui/material'
+import { CircularProgress, IconButton, useMediaQuery, useTheme } from '@mui/material'
 
 import tutorial from '@/../public/como-baixar-video-tiktok.png'
+import ContentPasteIcon from '@mui/icons-material/ContentPaste'
 import tutorialMobile from '@/../public/como-baixar-video-mobile.png'
 
 export default function TikTokVideoPage (): JSX.Element {
@@ -24,11 +25,18 @@ export default function TikTokVideoPage (): JSX.Element {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
 
   const {
+    loading,
     videoUrl,
+    handlePaste,
     handleChange,
-    handleDownload,
-    loading
+    handleDownload
   } = UseDownloadVideo()
+
+  const PasteIconButton = ({ onPaste }: any): any => (
+    <IconButton className="icon-button" onClick={onPaste}>
+      <ContentPasteIcon />
+    </IconButton>
+  )
 
   return (
     <ContentContainer>
@@ -40,6 +48,9 @@ export default function TikTokVideoPage (): JSX.Element {
           variant="outlined"
           value={videoUrl}
           onChange={handleChange}
+          InputProps={{
+            endAdornment: <PasteIconButton onPaste={handlePaste} />
+          }}
         />
         <CustomButton
           fullWidth

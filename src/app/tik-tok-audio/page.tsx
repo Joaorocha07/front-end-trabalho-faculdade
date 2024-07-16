@@ -14,9 +14,10 @@ import {
 
 import { ToastContainer } from 'react-toastify'
 import { UseDownloadAudio } from '@/hooks/tik-tok/useDonwloadAudio'
-import { CircularProgress, useMediaQuery, useTheme } from '@mui/material'
+import { CircularProgress, IconButton, useMediaQuery, useTheme } from '@mui/material'
 
 import tutorial from '@/../public/como-baixar-audio-tiktok.png'
+import ContentPasteIcon from '@mui/icons-material/ContentPaste'
 import tutorialMobile from '@/../public/como-baixar-audio-mobile.png'
 
 export default function TikTokAudioPage (): JSX.Element {
@@ -24,11 +25,20 @@ export default function TikTokAudioPage (): JSX.Element {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
 
   const {
+    loading,
     videoUrl,
+    handlePaste,
     handleChange,
-    handleDownload,
-    loading
+    handleDownload
   } = UseDownloadAudio()
+
+  const PasteIconButton = ({ onPaste }: any): any => (
+    <IconButton className="icon-button" onClick={onPaste}>
+      <ContentPasteIcon />
+    </IconButton>
+  )
+
+  console.log('aqui')
 
   return (
     <ContentContainer>
@@ -40,6 +50,9 @@ export default function TikTokAudioPage (): JSX.Element {
           variant="outlined"
           value={videoUrl}
           onChange={handleChange}
+          InputProps={{
+            endAdornment: <PasteIconButton onPaste={handlePaste} />
+          }}
         />
         <CustomButton
           fullWidth

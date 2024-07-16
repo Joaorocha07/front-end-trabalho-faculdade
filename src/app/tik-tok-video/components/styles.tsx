@@ -36,7 +36,12 @@ export const Title = styled(Typography)(({ theme }) => ({
 }))
 
 export const CustomTextField = styled(TextField)(({ theme }) => ({
-  marginBottom: theme.spacing(1)
+  marginBottom: theme.spacing(1),
+  '& .icon-button': {
+    cursor: 'pointer',
+    marginLeft: theme.spacing(1),
+    color: theme.palette.text.secondary
+  }
 }))
 
 export const CustomButton = styled(Button)(({ theme }) => ({

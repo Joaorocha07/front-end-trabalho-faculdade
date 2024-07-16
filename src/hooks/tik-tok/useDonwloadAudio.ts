@@ -7,6 +7,7 @@ import DownloadVideos from '@/services/tik-tok/DownloadVideo'
 interface IUseDowloadAudio {
   videoUrl: string
   loading: boolean
+  handlePaste: () => Promise<void>
   handleDownload: () => Promise<void>
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
@@ -30,12 +31,30 @@ export const UseDownloadAudio = (): IUseDowloadAudio => {
     setIsValidUrl(validateUrl(url))
   }
 
+  const handlePaste = async (): Promise<void> => {
+    const text = await navigator.clipboard.readText()
+
+    if (validateUrl(text)) {
+      const event = new Event('input', { bubbles: true }) as unknown as React.ChangeEvent<HTMLInputElement>
+
+      Object.defineProperty(event, 'target', {
+        writable: false,
+        // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+        value: { value: text, type: 'text' } as HTMLInputElement
+      })
+
+      handleChange(event)
+    } else {
+      notifyError('Cole um link válido do TikTok!')
+    }
+  }
+
   const downloadAudio = async (url: string, data: any): Promise<void> => {
     const response = await fetch(url)
     const blob = await response.blob()
 
     const nameAudio = data?.data.music_info.author.toLowerCase().replace(/\s+/g, '-')
-    const fileName = `${nameAudio}-audio-download.mp3`
+    const fileName = `viddrop-audio-${nameAudio}.mp3`
 
     const anchor = document.createElement('a')
     anchor.href = URL.createObjectURL(blob)
@@ -46,6 +65,7 @@ export const UseDownloadAudio = (): IUseDowloadAudio => {
 
     notifySuccess('Download de áudio concluído!')
     setLoading(false)
+    setVideoUrl('')
   }
 
   const handleDownload = async (): Promise<void> => {
@@ -60,6 +80,7 @@ export const UseDownloadAudio = (): IUseDowloadAudio => {
     if (!isValidUrl) {
       notifyError('Insira um link válido do TikTok!')
       setLoading(false)
+      setVideoUrl('')
       return
     }
 
@@ -76,8 +97,9 @@ export const UseDownloadAudio = (): IUseDowloadAudio => {
   }
 
   return {
-    videoUrl,
     loading,
+    videoUrl,
+    handlePaste,
     handleChange,
     handleDownload
   }
