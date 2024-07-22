@@ -7,7 +7,8 @@ export const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   justifyContent: 'space-between',
   alignItems: 'center',
   [theme.breakpoints.down('sm')]: {
-    flexDirection: 'column',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center'
   }
 }))
@@ -16,11 +17,12 @@ export const Logo = styled('img')(({ theme }) => ({
   height: '120px',
   marginRight: theme.spacing(-17),
   [theme.breakpoints.down('md')]: {
-    marginRight: theme.spacing(0)
+    marginRight: theme.spacing(0),
+    height: '100px'
   },
   [theme.breakpoints.down('sm')]: {
     marginRight: theme.spacing(0),
-    marginBottom: theme.spacing(2)
+    height: '100px'
   }
 }))
 
@@ -32,7 +34,8 @@ export const NavMenu = styled('div')(({ theme }) => ({
     marginBottom: theme.spacing(2),
     flexDirection: 'column',
     alignItems: 'center',
-    width: '100%'
+    width: '100%',
+    display: 'none'
   }
 }))
 

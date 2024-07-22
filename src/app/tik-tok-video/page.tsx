@@ -4,11 +4,11 @@ import React from 'react'
 import 'react-toastify/dist/ReactToastify.css'
 
 import {
-  ContainerBox,
-  ContentContainer,
+  Title,
   CustomButton,
+  ContainerBox,
   CustomTextField,
-  Title
+  ContentContainer
 } from './components/styles'
 
 import { ToastContainer } from 'react-toastify'
@@ -79,7 +79,6 @@ export default function TikTokVideoPage (): JSX.Element {
           pauseOnHover
           theme="light"
         />
-        {/* <Image src={isMobile ? tutorialMobile.src : tutorial.src} alt="Como baixar video tiktok" /> */}
         <CardTutorial text={'Como baixar vídeo do tik tok sem marca d\'água?'} />
       </ContainerBox>
     </ContentContainer>
