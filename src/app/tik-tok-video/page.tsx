@@ -80,7 +80,7 @@ export default function TikTokVideoPage (): JSX.Element {
           theme="light"
         />
         {/* <Image src={isMobile ? tutorialMobile.src : tutorial.src} alt="Como baixar video tiktok" /> */}
-        <CardTutorial text='Como baixar vídeo do tik tok?' />
+        <CardTutorial text={'Como baixar vídeo do tik tok sem marca d\'água?'} />
       </ContainerBox>
     </ContentContainer>
   )

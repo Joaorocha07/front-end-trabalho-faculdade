@@ -37,7 +37,7 @@ export const steps = [
   {
     imgBefore: one,
     imgAfter: two,
-    text: 'Pesquisar vídeo - abra o vídeo que deseja salvar o audio no seu dispositivo móvel (Android ou iOS), use o aplicativo TT'
+    text: 'Pesquisar vídeo - abra o vídeo que deseja salvar o audio ou o vídeo no seu dispositivo móvel (Android ou iOS), use o aplicativo TT'
   },
   {
     imgBefore: three,
@@ -47,6 +47,6 @@ export const steps = [
   {
     imgBefore: five,
     imgAfter: six,
-    text: 'TikTok download - volte ao site de TikTok video download e cole o link no campo de texto da página e clique em Baixar'
+    text: 'TikTok download - volte ao site do vid drop e cole o link no campo de texto da página e clique em Baixar'
   }
 ]
