@@ -14,7 +14,9 @@ export default function TikTokVideoLayout ({
     <>
       <CustomHead title="Vid Drop - Tik Tok - Vídeo" />
       <Header />
-      {children}
+      <main style={{ flex: 1 }}>
+        {children}
+      </main>
       <Footer />
     </>
   )

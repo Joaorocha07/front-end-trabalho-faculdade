@@ -8,6 +8,8 @@ export default function CustomHead ({ title }: CustomHeadProps): JSX.Element {
   return (
     <>
       <title>{title}</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content={'Baixe vídeos do TikTok sem marca d\'água com o Vid Drop. Rápido, fácil e gratuito!'} />
       <link
         rel="icon"
         href={icon.src}

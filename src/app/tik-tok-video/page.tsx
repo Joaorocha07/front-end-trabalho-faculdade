@@ -8,22 +8,17 @@ import {
   ContentContainer,
   CustomButton,
   CustomTextField,
-  Image,
   Title
 } from './components/styles'
 
 import { ToastContainer } from 'react-toastify'
 import { UseDownloadVideo } from '@/hooks/tik-tok/useDownloadVideo'
-import { CircularProgress, IconButton, useMediaQuery, useTheme } from '@mui/material'
+import { CircularProgress, IconButton } from '@mui/material'
 
-import tutorial from '@/../public/como-baixar-video-tiktok.png'
+import CardTutorial from './components/CardTutorial'
 import ContentPasteIcon from '@mui/icons-material/ContentPaste'
-import tutorialMobile from '@/../public/como-baixar-video-mobile.png'
 
 export default function TikTokVideoPage (): JSX.Element {
-  const theme = useTheme()
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
-
   const {
     loading,
     videoUrl,
@@ -41,7 +36,7 @@ export default function TikTokVideoPage (): JSX.Element {
   return (
     <ContentContainer>
       <ContainerBox>
-        <Title>Baixar vídeo TikTok</Title>
+        <Title>Baixar vídeo tik tok</Title>
         <CustomTextField
           fullWidth
           label="Insira o link do vídeo TikTok"
@@ -84,7 +79,8 @@ export default function TikTokVideoPage (): JSX.Element {
           pauseOnHover
           theme="light"
         />
-        <Image src={isMobile ? tutorialMobile.src : tutorial.src} alt="Como baixar video tiktok" />
+        {/* <Image src={isMobile ? tutorialMobile.src : tutorial.src} alt="Como baixar video tiktok" /> */}
+        <CardTutorial text='Como baixar vídeo do tik tok?' />
       </ContainerBox>
     </ContentContainer>
   )

@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import { notifyError, notifySuccess } from '@/components/modals'
 
-import DownloadVideos from '@/services/tik-tok/DownloadVideo'
+import TesteApiTikTok from '@/services/tik-tok/TesteApiTikTok'
 
 interface IUseDowloadAudio {
   videoUrl: string
@@ -84,8 +84,8 @@ export const UseDownloadAudio = (): IUseDowloadAudio => {
       return
     }
 
-    const jwt = process.env.NEXT_JWT_USER ?? ''
-    const response = await DownloadVideos({ videoUrl, jwt })
+    const jwt = process.env.NEXT_JWT_USER_GOLD ?? ''
+    const response = await TesteApiTikTok({ videoUrl, jwt })
 
     if (response?.msg === 'success') {
       const downloadUrl: string = response?.data.music_info.play

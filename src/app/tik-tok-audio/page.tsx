@@ -8,22 +8,17 @@ import {
   ContentContainer,
   CustomButton,
   CustomTextField,
-  Image,
   Title
 } from './components/styles'
 
 import { ToastContainer } from 'react-toastify'
 import { UseDownloadAudio } from '@/hooks/tik-tok/useDonwloadAudio'
-import { CircularProgress, IconButton, useMediaQuery, useTheme } from '@mui/material'
+import { CircularProgress, IconButton } from '@mui/material'
 
-import tutorial from '@/../public/como-baixar-audio-tiktok.png'
 import ContentPasteIcon from '@mui/icons-material/ContentPaste'
-import tutorialMobile from '@/../public/como-baixar-audio-mobile.png'
+import CardTutorial from '../tik-tok-video/components/CardTutorial'
 
 export default function TikTokAudioPage (): JSX.Element {
-  const theme = useTheme()
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
-
   const {
     loading,
     videoUrl,
@@ -38,12 +33,10 @@ export default function TikTokAudioPage (): JSX.Element {
     </IconButton>
   )
 
-  console.log('aqui')
-
   return (
     <ContentContainer>
       <ContainerBox>
-        <Title>Baixar audio TikTok</Title>
+        <Title>Baixar audio tik tok</Title>
         <CustomTextField
           fullWidth
           label="Insira o link do vídeo TikTok"
@@ -86,7 +79,8 @@ export default function TikTokAudioPage (): JSX.Element {
           pauseOnHover
           theme="light"
         />
-        <Image src={isMobile ? tutorialMobile.src : tutorial.src} alt="Como baixar audio tiktok" />
+        {/* <Image src={isMobile ? tutorialMobile.src : tutorial.src} alt="Como baixar audio tiktok" /> */}
+        <CardTutorial text='Como baixar audio do tik tok?' />
       </ContainerBox>
     </ContentContainer>
   )

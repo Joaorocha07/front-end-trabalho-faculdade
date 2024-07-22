@@ -46,6 +46,7 @@ export const CustomTextField = styled(TextField)(({ theme }) => ({
 
 export const CustomButton = styled(Button)(({ theme }) => ({
   marginTop: theme.spacing(1),
+  marginBottom: theme.spacing(1.5),
   backgroundImage: 'linear-gradient(to right, #b36fff, #6b2c91)',
   color: '#FFFFFF',
   '&:hover': {
