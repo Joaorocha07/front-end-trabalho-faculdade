@@ -37,7 +37,7 @@ export default function Contato (): JSX.Element {
   })
 
   return (
-    <Container sx={{ py: 4, display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 'calc(100vh - 128px)' }}>
+    <Container sx={{ py: 4, display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 'calc(100vh - 248px)' }}>
       <Paper elevation={3} sx={{ p: 3 }}>
         <Typography variant="h3" gutterBottom>
           Entre em Contato Conosco
