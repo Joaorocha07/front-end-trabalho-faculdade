@@ -25,6 +25,7 @@ export const ContainerBox = styled(Box)(({ theme }) => ({
 
 export const Title = styled(Typography)(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
+    marginBottom: theme.spacing(2),
     fontSize: '2.0rem',
     fontWeight: 700
   },

@@ -49,7 +49,11 @@ export default function TikTokAudioPage (): JSX.Element {
               <>
                 {showClearButton
                   ? (
-                  <IconButton onClick={handleClear} edge="end">
+                  <IconButton
+                    edge="end"
+                    disabled={loading}
+                    onClick={handleClear}
+                  >
                     <ClearIcon />
                   </IconButton>
                     )
