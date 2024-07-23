@@ -7,7 +7,8 @@ export const FooterContainer = styled('footer')(({ theme }) => ({
   color: '#fff',
   padding: theme.spacing(4, 0),
   textAlign: 'center',
-  width: '100%'
+  width: '100%',
+  marginTop: 'auto'
 }))
 
 export const LogoInstagram = styled(InstagramIcon)(({ theme }) => ({

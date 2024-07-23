@@ -1,6 +1,7 @@
 'use client'
 import React from 'react'
 
+import { Box } from '@mui/material'
 import { type IRootLayout } from '@/types/global'
 
 import CustomHead from '@/app/head'
@@ -12,10 +13,14 @@ export default function TikTokAudioLayout ({
 }: IRootLayout): JSX.Element {
   return (
     <>
-      <CustomHead title="Vid Drop - Tik Tok - Audio" />
-      <Header />
-      {children}
-      <Footer />
+      <Box style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+        <CustomHead title="Vid Drop - Tik Tok - Audio" />
+        <Header />
+        <main style={{ flex: 1 }}>
+          {children}
+        </main>
+        <Footer />
+      </Box>
     </>
   )
 }
