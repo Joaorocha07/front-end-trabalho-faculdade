@@ -4,8 +4,8 @@ import React from 'react'
 import { type IRootLayout } from '@/types/global'
 
 import CustomHead from '@/app/head'
-import Header from '@/components/layout/Header'
-import Footer from '@/components/layout/Footer'
+import Header from '@/components/layout/header'
+import Footer from '@/components/layout/footer'
 
 export default function TikTokVideoLayout ({
   children

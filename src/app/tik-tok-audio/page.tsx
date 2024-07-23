@@ -79,7 +79,6 @@ export default function TikTokAudioPage (): JSX.Element {
           pauseOnHover
           theme="light"
         />
-        {/* <Image src={isMobile ? tutorialMobile.src : tutorial.src} alt="Como baixar audio tiktok" /> */}
         <CardTutorial text='Como baixar audio do tik tok?' />
       </ContainerBox>
     </ContentContainer>
