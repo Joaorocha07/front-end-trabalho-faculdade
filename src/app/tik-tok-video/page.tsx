@@ -15,6 +15,7 @@ import { ToastContainer } from 'react-toastify'
 import { CircularProgress, IconButton } from '@mui/material'
 import { UseDownloadVideo } from '@/hooks/tik-tok/useDownloadVideo'
 
+import ClearIcon from '@mui/icons-material/Clear'
 import CardTutorial from './components/CardTutorial'
 import ContentPasteIcon from '@mui/icons-material/ContentPaste'
 
@@ -22,16 +23,16 @@ export default function TikTokVideoPage (): JSX.Element {
   const {
     loading,
     videoUrl,
+    handleClear,
     handlePaste,
     handleChange,
-    handleDownload
+    handleDownload,
+    showClearButton
   } = UseDownloadVideo()
 
-  const PasteIconButton = ({ onPaste }: any): any => (
-    <IconButton className="icon-button" onClick={onPaste}>
-      <ContentPasteIcon />
-    </IconButton>
-  )
+  const handlePasteClick = (): any => {
+    void handlePaste()
+  }
 
   return (
     <ContentContainer>
@@ -44,7 +45,21 @@ export default function TikTokVideoPage (): JSX.Element {
           value={videoUrl}
           onChange={handleChange}
           InputProps={{
-            endAdornment: <PasteIconButton onPaste={handlePaste} />
+            endAdornment: (
+              <>
+                {showClearButton
+                  ? (
+                  <IconButton onClick={handleClear} edge="end">
+                    <ClearIcon />
+                  </IconButton>
+                    )
+                  : (
+                  <IconButton onClick={handlePasteClick} edge="end">
+                    <ContentPasteIcon />
+                  </IconButton>
+                    )}
+              </>
+            )
           }}
         />
         <CustomButton

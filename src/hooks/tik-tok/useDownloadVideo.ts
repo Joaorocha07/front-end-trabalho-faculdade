@@ -7,6 +7,8 @@ import TesteApiTikTok from '@/services/tik-tok/TesteApiTikTok'
 interface IUseDowloadVideo {
   videoUrl: string
   loading: boolean
+  handleClear: () => void
+  showClearButton: boolean
   handlePaste: () => Promise<void>
   handleDownload: () => Promise<void>
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
@@ -16,6 +18,7 @@ export const UseDownloadVideo = (): IUseDowloadVideo => {
   const [videoUrl, setVideoUrl] = useState('')
   const [isValidUrl, setIsValidUrl] = useState(true)
   const [loading, setLoading] = useState<boolean>(false)
+  const [showClearButton, setShowClearButton] = useState<boolean>(false)
 
   const validateUrl = (url: string): boolean => {
     const regexStandard = /^https:\/\/www\.tiktok\.com\/@[\w.-]+\/video\/\d+$/
@@ -28,7 +31,9 @@ export const UseDownloadVideo = (): IUseDowloadVideo => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const url = e.target.value
     setVideoUrl(url)
-    setIsValidUrl(validateUrl(url))
+    const valid = validateUrl(url)
+    setIsValidUrl(valid)
+    setShowClearButton(valid && url.length > 0)
   }
 
   const handlePaste = async (): Promise<void> => {
@@ -47,6 +52,12 @@ export const UseDownloadVideo = (): IUseDowloadVideo => {
     } else {
       notifyError('Cole um link válido do TikTok!')
     }
+  }
+
+  const handleClear = (): void => {
+    setVideoUrl('')
+    setIsValidUrl(true)
+    setShowClearButton(false)
   }
 
   const downloadVideo = async (url: string, data: any): Promise<void> => {
@@ -97,10 +108,12 @@ export const UseDownloadVideo = (): IUseDowloadVideo => {
   }
 
   return {
-    videoUrl,
     loading,
+    videoUrl,
+    handleClear,
     handlePaste,
     handleChange,
-    handleDownload
+    handleDownload,
+    showClearButton
   }
 }

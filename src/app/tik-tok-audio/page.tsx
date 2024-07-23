@@ -12,9 +12,10 @@ import {
 } from './components/styles'
 
 import { ToastContainer } from 'react-toastify'
-import { UseDownloadAudio } from '@/hooks/tik-tok/useDonwloadAudio'
 import { CircularProgress, IconButton } from '@mui/material'
+import { UseDownloadAudio } from '@/hooks/tik-tok/useDonwloadAudio'
 
+import ClearIcon from '@mui/icons-material/Clear'
 import ContentPasteIcon from '@mui/icons-material/ContentPaste'
 import CardTutorial from '../tik-tok-video/components/CardTutorial'
 
@@ -22,16 +23,16 @@ export default function TikTokAudioPage (): JSX.Element {
   const {
     loading,
     videoUrl,
+    handleClear,
     handlePaste,
     handleChange,
-    handleDownload
+    handleDownload,
+    showClearButton
   } = UseDownloadAudio()
 
-  const PasteIconButton = ({ onPaste }: any): any => (
-    <IconButton className="icon-button" onClick={onPaste}>
-      <ContentPasteIcon />
-    </IconButton>
-  )
+  const handlePasteClick = (): any => {
+    void handlePaste()
+  }
 
   return (
     <ContentContainer>
@@ -44,7 +45,21 @@ export default function TikTokAudioPage (): JSX.Element {
           value={videoUrl}
           onChange={handleChange}
           InputProps={{
-            endAdornment: <PasteIconButton onPaste={handlePaste} />
+            endAdornment: (
+              <>
+                {showClearButton
+                  ? (
+                  <IconButton onClick={handleClear} edge="end">
+                    <ClearIcon />
+                  </IconButton>
+                    )
+                  : (
+                  <IconButton onClick={handlePasteClick} edge="end">
+                    <ContentPasteIcon />
+                  </IconButton>
+                    )}
+              </>
+            )
           }}
         />
         <CustomButton

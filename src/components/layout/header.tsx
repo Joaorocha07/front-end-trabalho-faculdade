@@ -21,8 +21,9 @@ import { usePathname } from 'next/navigation'
 import DrawerMenu from './DrawerMenu'
 import logo from '@/../public/logo-branco.png'
 import MenuIcon from '@mui/icons-material/Menu'
+import CloseIcon from '@mui/icons-material/Close'
 interface RotatingMenuIconProps extends SvgIconProps {
-  rotated: boolean
+  open: boolean
 }
 
 export default function Header (): JSX.Element {
@@ -48,11 +49,12 @@ export default function Header (): JSX.Element {
     setIconRotated(open)
   }
 
-  const RotatingMenuIcon = styled((props: RotatingMenuIconProps) => (
-    <MenuIcon {...props} />
-  ))(({ rotated }) => ({
+  const MenuToggleIcon = styled(({ open, ...props }: { open: boolean } & RotatingMenuIconProps) => (
+    open ? <CloseIcon {...props} /> : <MenuIcon {...props} />
+  ))(({ open }) => ({
     transition: 'transform 0.3s ease-in-out',
-    transform: rotated ? 'rotate(90deg)' : 'rotate(180deg)'
+    // Optional transform for additional visual effect
+    transform: open ? 'rotate(0deg)' : 'rotate(0deg)'
   }))
 
   useEffect(() => {
@@ -79,7 +81,7 @@ export default function Header (): JSX.Element {
                 setIconRotated(!drawerOpen)
               }}
             >
-              <RotatingMenuIcon rotated={iconRotated} />
+              <MenuToggleIcon open={iconRotated} />
             </IconButton>
             <NavMenu>
               <StyledButton
@@ -105,6 +107,7 @@ export default function Header (): JSX.Element {
               handleButtonClick={handleButtonClick}
               setDrawerOpen={setDrawerOpen}
               setIconRotated={setIconRotated}
+              selectedButton={selectedButton}
             />
         </StyledToolbar>
       </Container>
