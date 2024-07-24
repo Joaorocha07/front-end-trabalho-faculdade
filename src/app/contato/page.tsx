@@ -6,9 +6,11 @@ import {
   Paper,
   Button,
   Divider,
+  useTheme,
   TextField,
   Container,
-  Typography
+  Typography,
+  useMediaQuery
 } from '@mui/material'
 
 import { useFormik } from 'formik'
@@ -16,6 +18,9 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
 export default function Contato (): JSX.Element {
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
+
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -28,22 +33,39 @@ export default function Contato (): JSX.Element {
       message: Yup.string().required('Campo obrigatório.')
     }),
     onSubmit: (values, { resetForm }) => {
-      // Lógica para manipular o envio do formulário
       console.log('Valores do formulário:', values)
-
-      // Limpa os campos do formulário
       resetForm()
     }
   })
 
   return (
-    <Container sx={{ py: 4, display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 'calc(100vh - 248px)' }}>
-      <Paper elevation={3} sx={{ p: 3 }}>
-        <Typography variant="h3" gutterBottom>
-          Entre em Contato Conosco
+    <Container
+      sx={{
+        py: 4,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: 'calc(100vh - 248px)'
+      }}
+    >
+      <Paper
+        elevation={3}
+        sx={{ p: 3 }}
+      >
+        <Typography
+          variant="h3"
+          gutterBottom
+          sx={{
+            fontSize: isMobile ? '2rem' : '2.5rem'
+          }}
+        >
+          Entre em contato conosco
         </Typography>
         <Typography paragraph>
-          Estamos aqui para ajudar! Se você tiver alguma dúvida, sugestão ou problema, sinta-se à vontade para nos contatar através do formulário abaixo.
+          Estamos aqui para ajudar! Se você tiver
+          alguma dúvida, sugestão ou problema,
+          sinta-se à vontade para nos contatar
+          através do formulário abaixo.
         </Typography>
 
         <Divider sx={{ my: 2 }} />
