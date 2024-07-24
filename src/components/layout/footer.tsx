@@ -30,6 +30,7 @@ export default function Footer (): JSX.Element {
             </Link>
           </Typography>
         </Box>
+        {/* <TradutorSelect /> */}
       </Container>
     </FooterContainer>
   )
