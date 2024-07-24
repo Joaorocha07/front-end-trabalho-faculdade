@@ -18,6 +18,7 @@ import {
 
 import { usePathname } from 'next/navigation'
 
+import Link from 'next/link'
 import DrawerMenu from './DrawerMenu'
 import logo from '@/../public/logo-branco.png'
 import MenuIcon from '@mui/icons-material/Menu'
@@ -53,7 +54,6 @@ export default function Header (): JSX.Element {
     open ? <CloseIcon {...props} /> : <MenuIcon {...props} />
   ))(({ open }) => ({
     transition: 'transform 0.3s ease-in-out',
-    // Optional transform for additional visual effect
     transform: open ? 'rotate(0deg)' : 'rotate(0deg)'
   }))
 
@@ -69,46 +69,48 @@ export default function Header (): JSX.Element {
     <AppBar position="static" sx={{ backgroundColor: 'black' }}>
       <Container>
         <StyledToolbar>
-          <Logo src={logo.src} alt="Logo" />
-            <IconButton
-              edge="start"
+          <Link href='/tik-tok-video'>
+            <Logo src={logo.src} alt="Logo" />
+          </Link>
+          <IconButton
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            className="icon-button"
+            sx={{ display: { xs: 'block', sm: 'none' } }}
+            onClick={() => {
+              setDrawerOpen(!drawerOpen)
+              setIconRotated(!drawerOpen)
+            }}
+          >
+            <MenuToggleIcon open={iconRotated} />
+          </IconButton>
+          <NavMenu>
+            <StyledButton
               color="inherit"
-              aria-label="menu"
-              className="icon-button"
-              sx={{ display: { xs: 'block', sm: 'none' } }}
-              onClick={() => {
-                setDrawerOpen(!drawerOpen)
-                setIconRotated(!drawerOpen)
-              }}
+              href="/tik-tok-video"
+              onClick={() => { handleButtonClick('video') }}
+              isSelected={selectedButton === 'video'}
             >
-              <MenuToggleIcon open={iconRotated} />
-            </IconButton>
-            <NavMenu>
-              <StyledButton
-                color="inherit"
-                href="/tik-tok-video"
-                onClick={() => { handleButtonClick('video') }}
-                isSelected={selectedButton === 'video'}
-              >
-                Baixar Vídeo TikTok
-              </StyledButton>
-              <StyledButton
-                color="inherit"
-                href="/tik-tok-audio"
-                onClick={() => { handleButtonClick('audio') }}
-                isSelected={selectedButton === 'audio'}
-              >
-                Baixar audio TikTok
-              </StyledButton>
-            </NavMenu>
-            <DrawerMenu
-              drawerOpen={drawerOpen}
-              toggleDrawer={toggleDrawer}
-              handleButtonClick={handleButtonClick}
-              setDrawerOpen={setDrawerOpen}
-              setIconRotated={setIconRotated}
-              selectedButton={selectedButton}
-            />
+              Baixar Vídeo TikTok
+            </StyledButton>
+            <StyledButton
+              color="inherit"
+              href="/tik-tok-audio"
+              onClick={() => { handleButtonClick('audio') }}
+              isSelected={selectedButton === 'audio'}
+            >
+              Baixar audio TikTok
+            </StyledButton>
+          </NavMenu>
+          <DrawerMenu
+            drawerOpen={drawerOpen}
+            toggleDrawer={toggleDrawer}
+            handleButtonClick={handleButtonClick}
+            setDrawerOpen={setDrawerOpen}
+            setIconRotated={setIconRotated}
+            selectedButton={selectedButton}
+          />
         </StyledToolbar>
       </Container>
     </AppBar>

@@ -45,7 +45,7 @@ export default function Contato (): JSX.Element {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        minHeight: 'calc(100vh - 248px)'
+        minHeight: 'calc(100vh - 252px)'
       }}
     >
       <Paper

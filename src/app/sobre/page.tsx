@@ -123,7 +123,7 @@ export default function Sobre (): JSX.Element {
         </Typography>
         <Typography paragraph>
           <span style={{ fontWeight: 'bold' }}>
-            Os vídeos baixados incluem marcas d&rsquo;água
+            Os vídeos baixados incluem marcas d&rsquo;água?
           </span>
           <br />
           Não, o Vid Drop remove a marca d&rsquo;água dos
