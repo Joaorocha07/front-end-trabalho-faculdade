@@ -6,7 +6,6 @@ import {
   List,
   Grid,
   Paper,
-  Button,
   Divider,
   useTheme,
   ListItem,
@@ -15,6 +14,8 @@ import {
   ListItemText,
   useMediaQuery
 } from '@mui/material'
+
+import { CustomButton } from '@/components/button/CustomButtonPrimary'
 
 export default function CursoTikTok (): JSX.Element {
   const theme = useTheme()
@@ -151,11 +152,9 @@ export default function CursoTikTok (): JSX.Element {
             height="315"
             src="https://www.youtube.com/embed/4jUyc4AlthA?si=Np7q3bYySKtWzGnE"
             title="YouTube video player"
-            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
-            // eslint-disable-next-line react/no-unknown-property
             style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
           ></iframe>
           </Box>
@@ -171,9 +170,9 @@ export default function CursoTikTok (): JSX.Element {
           <Typography variant="body1" component="p" gutterBottom>
             Inscreva-se agora e aproveite um desconto especial de lançamento. Transforme sua presença no TikTok e comece a ganhar dinheiro!
           </Typography>
-          <Button variant="contained" color="primary" size="large">
+          <CustomButton variant="contained" color="primary" size="large">
             Inscreva-se Agora
-          </Button>
+          </CustomButton>
         </Box>
       </Paper>
     </Container>

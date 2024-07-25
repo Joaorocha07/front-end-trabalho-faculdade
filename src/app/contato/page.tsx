@@ -4,7 +4,6 @@ import React from 'react'
 import {
   Box,
   Paper,
-  Button,
   Divider,
   useTheme,
   TextField,
@@ -14,6 +13,7 @@ import {
 } from '@mui/material'
 
 import { useFormik } from 'formik'
+import { CustomButton } from '@/components/button/CustomButtonPrimary'
 
 import * as Yup from 'yup'
 
@@ -115,9 +115,9 @@ export default function Contato (): JSX.Element {
             error={(Boolean(formik.touched.message)) && Boolean(formik.errors.message)}
             helperText={(Boolean(formik.touched.message)) && formik.errors.message}
           />
-          <Button variant="contained" color="primary" type="submit" sx={{ mt: 2 }}>
+          <CustomButton variant="contained" color="primary" type="submit" sx={{ mt: 2 }}>
             Enviar
-          </Button>
+          </CustomButton>
         </Box>
       </Paper>
     </Container>
