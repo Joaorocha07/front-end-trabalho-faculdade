@@ -41,11 +41,11 @@ export default function Contato (): JSX.Element {
   return (
     <Container
       sx={{
-        py: 4,
+        py: 6,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        minHeight: 'calc(100vh - 252px)'
+        minHeight: 'calc(100vh - 236px)'
       }}
     >
       <Paper

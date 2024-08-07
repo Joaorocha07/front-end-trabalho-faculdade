@@ -1,7 +1,7 @@
 import React from 'react'
 
+import { FooterContainer } from './styles/footer'
 import { Box, Container, Typography } from '@mui/material'
-import { FooterContainer, LogoInstagram } from './styles/footer'
 
 import Link from 'next/link'
 
@@ -11,9 +11,9 @@ export default function Footer (): JSX.Element {
   return (
     <FooterContainer>
       <Container>
-        <LogoInstagram />
+        {/* <LogoInstagram /> */}
         <Typography variant="body2" component="span">
-          Desenvolvido por @João Rocha - {currentYear}
+          Desenvolvido em {currentYear}
         </Typography>
         <Box>
           <Typography variant="body2" component="span" sx={{ display: 'block', mt: 1 }}>
