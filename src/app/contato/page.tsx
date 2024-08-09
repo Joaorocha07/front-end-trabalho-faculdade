@@ -9,35 +9,21 @@ import {
   TextField,
   Container,
   Typography,
-  useMediaQuery
+  useMediaQuery,
+  CircularProgress
 } from '@mui/material'
 
-import { useFormik } from 'formik'
+import { UseContato } from '@/hooks/contato/useContato'
 import { CustomButton } from '@/components/button/CustomButtonPrimary'
 
-import * as Yup from 'yup'
+import 'react-toastify/dist/ReactToastify.css'
+import { ToastContainer } from 'react-toastify'
 
 export default function Contato (): JSX.Element {
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
 
-  const formik = useFormik({
-    initialValues: {
-      email: '',
-      subject: '',
-      message: ''
-    },
-    validationSchema: Yup.object({
-      email: Yup.string().email('Por favor, insira um e-mail válido.').required('Campo obrigatório.'),
-      subject: Yup.string().required('Campo obrigatório.'),
-      message: Yup.string().required('Campo obrigatório.')
-    }),
-    onSubmit: (values, { resetForm }) => {
-      console.log('Valores do formulário:', values)
-      resetForm()
-    }
-  })
-
+  const { formik, loading } = UseContato()
   return (
     <Container
       sx={{
@@ -115,9 +101,34 @@ export default function Contato (): JSX.Element {
             error={(Boolean(formik.touched.message)) && Boolean(formik.errors.message)}
             helperText={(Boolean(formik.touched.message)) && formik.errors.message}
           />
-          <CustomButton variant="contained" color="primary" type="submit" sx={{ mt: 2 }}>
-            Enviar
+          <CustomButton
+            variant="contained"
+            color="primary"
+            type="submit"
+            sx={{ mt: 2 }}
+            disabled={loading}
+          >
+          {loading
+            ? (
+                <CircularProgress size={24} />
+              )
+            : (
+                'Enviar'
+              )
+          }
           </CustomButton>
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
         </Box>
       </Paper>
     </Container>

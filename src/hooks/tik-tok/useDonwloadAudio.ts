@@ -21,11 +21,12 @@ export const UseDownloadAudio = (): IUseDowloadAudio => {
   const [showClearButton, setShowClearButton] = useState<boolean>(false)
 
   const validateUrl = (url: string): boolean => {
+    const regexNew = /^https:\/\/www\.tiktok\.com\/@[\w.-]+\/video\/\d+(\?[;&=\w\d%]+)?$/
     const regexStandard = /^https:\/\/www\.tiktok\.com\/@[\w.-]+\/video\/\d+$/
     const regexMobile = /^https:\/\/vm\.tiktok\.com\/[\w\d]+\/?$/
     const regex = /^https:\/\/www\.tiktok\.com\/@[\w.-]+\/video\/\d+\?[\w=&-]+$/
 
-    return regexStandard.test(url) || regexMobile.test(url) || regex.test(url)
+    return regexStandard.test(url) || regexMobile.test(url) || regex.test(url) || regexNew.test(url)
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
