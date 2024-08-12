@@ -2,7 +2,7 @@ import React from 'react'
 
 import { type CustomHeadProps } from '@/types/global'
 
-import favicon32x32 from '@/../public/favicon.ico'
+import favicon32x32 from '../../public/logo-branco.png'
 
 export default function CustomHead ({ title, description }: CustomHeadProps): JSX.Element {
   return (
