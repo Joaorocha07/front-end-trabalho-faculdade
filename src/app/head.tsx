@@ -1,9 +1,6 @@
-/* eslint-disable react/no-string-refs */
 import React from 'react'
 
 import { type CustomHeadProps } from '@/types/global'
-
-// import favicon32x32 from '../../public/logo-branco.png'
 
 export default function CustomHead ({ title, description }: CustomHeadProps): JSX.Element {
   return (
@@ -13,7 +10,7 @@ export default function CustomHead ({ title, description }: CustomHeadProps): JS
       <meta name="description" content={description} />
       <link
         rel="icon"
-        ref="../../public/logo-branco.png"
+        href="../../public/logo-branco.png"
         type="image/png"
       />
       {/* Open Graph */}
