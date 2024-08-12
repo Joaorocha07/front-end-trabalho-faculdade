@@ -2,8 +2,6 @@ import React from 'react'
 
 import { type CustomHeadProps } from '@/types/global'
 
-import Link from 'next/link'
-
 import favicon32x32 from '@/../public/favicon.ico'
 
 export default function CustomHead ({ title, description }: CustomHeadProps): JSX.Element {
@@ -12,10 +10,10 @@ export default function CustomHead ({ title, description }: CustomHeadProps): JS
       <title>{title}</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta name="description" content={description} />
-      <Link
+      <link
         rel="icon"
         href={favicon32x32.src}
-        type="Logo"
+        type="image/x-icon"
       />
       {/* Open Graph */}
       <meta property="og:title" content={title} />
