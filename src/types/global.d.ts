@@ -4,4 +4,5 @@ export interface IRootLayout {
 
 export interface CustomHeadProps {
   title: string
+  description: string
 }

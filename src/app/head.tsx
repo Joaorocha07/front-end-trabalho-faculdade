@@ -2,31 +2,32 @@ import React from 'react'
 
 import { type CustomHeadProps } from '@/types/global'
 
-import icon from '@/../public/favicon.ico'
+import Link from 'next/link'
 
-export default function CustomHead ({ title }: CustomHeadProps): JSX.Element {
+import favicon32x32 from '@/../public/favicon.ico'
+
+export default function CustomHead ({ title, description }: CustomHeadProps): JSX.Element {
   return (
     <>
       <title>{title}</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta name="description" content={'Baixe vídeos do TikTok sem marca d\'água com o Vid Drop. Rápido, fácil e gratuito!'} />
-      <link
+      <meta name="description" content={description} />
+      <Link
         rel="icon"
-        href={icon.src}
-        type="image/svg+xml"
-        sizes="any"
+        href={favicon32x32.src}
+        type="Logo"
       />
       {/* Open Graph */}
       <meta property="og:title" content={title} />
-      <meta property="og:description" content={'Baixe vídeos do TikTok sem marca d\'água com o Vid Drop. Rápido, fácil e gratuito!'} />
-      <meta property="og:url" content={'https://viddrop.netlify.app/tik-tok-video'} />
-      <meta property="og:image" content={'@/../public/favicon-32x32.png'} />
+      <meta property="og:description" content={description} />
+      <meta property="og:url" content={'https://viddrop.com.br/tik-tok-video'} />
+      <meta property="og:image" content={favicon32x32.src} />
       <meta property="og:type" content="website" />
       {/* Twitter Card */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={'Baixe vídeos do TikTok sem marca d\'água com o Vid Drop. Rápido, fácil e gratuito!'} />
-      <meta name="twitter:image" content={'@/../public/favicon-32x32.png'} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={favicon32x32.src} />
     </>
   )
 }

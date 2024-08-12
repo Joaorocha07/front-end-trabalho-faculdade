@@ -14,7 +14,10 @@ export default function TikTokAudioLayout ({
   return (
     <>
       <Box style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-        <CustomHead title="Vid Drop - Tik Tok - Audio" />
+        <CustomHead
+          title='Vid Drop - Tik Tok - Audio'
+          description={'Baixe vídeos do TikTok sem marca d\'água com o Vid Drop. Rápido, fácil e gratuito!'}
+        />
         <Header />
         <main style={{ flex: 1 }}>
           {children}

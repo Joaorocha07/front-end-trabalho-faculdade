@@ -14,7 +14,10 @@ export default function ContatoLayout ({
   return (
     <>
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-        <CustomHead title="Vid Drop - Contato" />
+        <CustomHead
+          title="Vid Drop - Contato"
+          description='Página de contato | Entre em contato conosco, tire alguma dúvida ou sugestão para o site'
+        />
         <Header />
         <main style={{ flex: 1 }}>
           {children}

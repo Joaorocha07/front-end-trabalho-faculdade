@@ -14,7 +14,10 @@ export default function CursoTikTokLayout ({
   return (
     <>
       <Box style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-        <CustomHead title="Vid Drop - Curso - Tik Tok" />
+        <CustomHead
+          title='Vid Drop - Curso - Tik Tok'
+          description='Curso Tik Tok | Aprenda a ganhar dinheiro atraves da internet'
+        />
         <Header />
         <main style={{ flex: 1 }}>
           {children}
