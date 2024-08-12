@@ -31,7 +31,7 @@ export default function CustomHead ({ title, description }: CustomHeadProps): JS
       </Head>
       {/* Google Analytics */}
       <Script
-        strategy="lazyOnload"
+        async
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ANALYTICS}`}
       />
 
@@ -40,9 +40,7 @@ export default function CustomHead ({ title, description }: CustomHeadProps): JS
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', '${process.env.GOOGLE_ANALYTICS}', {
-            page_path: window.location.pathname,
-          });
+          gtag('config', ${process.env.GOOGLE_ANALYTICS});
               `}
       </Script>
     </>
