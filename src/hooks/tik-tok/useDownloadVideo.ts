@@ -25,8 +25,15 @@ export const UseDownloadVideo = (): IUseDowloadVideo => {
     const regexStandard = /^https:\/\/www\.tiktok\.com\/@[\w.-]+\/video\/\d+$/
     const regexMobile = /^https:\/\/vm\.tiktok\.com\/[\w\d]+\/?$/
     const regex = /^https:\/\/www\.tiktok\.com\/@[\w.-]+\/video\/\d+\?[\w=&-]+$/
+    const regexShortened = /^https:\/\/www\.tiktok\.com\/t\/[\w\d]+\/?$/
+    const regexPhoto = /^https:\/\/www\.tiktok\.com\/@[\w.-]+\/(video|photo)\/\d+(\?[;&=\w\d%]+)?$/
 
-    return regexStandard.test(url) || regexMobile.test(url) || regex.test(url) || regexNew.test(url)
+    return regexStandard.test(url) ||
+           regexMobile.test(url) ||
+           regex.test(url) ||
+           regexNew.test(url) ||
+           regexShortened.test(url) ||
+           regexPhoto.test(url)
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
