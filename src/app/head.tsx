@@ -14,7 +14,7 @@ export default function CustomHead ({ title, description }: CustomHeadProps): JS
         <meta name="description" content={description} />
         <link
           rel="icon"
-          href="/favicon.ico"
+          href="../../public/favicon.ico"
           type="image/png"
         />
         {/* Open Graph */}
