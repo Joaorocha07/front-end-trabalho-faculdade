@@ -2,8 +2,6 @@ import React from 'react'
 
 import { type CustomHeadProps } from '@/types/global'
 
-import Script from 'next/script'
-
 export default function CustomHead ({ title, description }: CustomHeadProps): JSX.Element {
   return (
     <>
@@ -30,7 +28,7 @@ export default function CustomHead ({ title, description }: CustomHeadProps): JS
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content="../../public/logo-branco.png" />
-      {/* Google Analytics */}
+      {/* Google Analytics
       <Script
         async
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ANALYTICS}`}
@@ -43,7 +41,7 @@ export default function CustomHead ({ title, description }: CustomHeadProps): JS
           gtag('js', new Date());
           gtag('config', ${process.env.GOOGLE_ANALYTICS});
               `}
-      </Script>
+      </Script> */}
     </>
   )
 }
