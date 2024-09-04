@@ -37,10 +37,10 @@ export default function TikTokAudioPage (): JSX.Element {
   return (
     <ContentContainer>
       <ContainerBox>
-        <Title>Baixar audio tik tok</Title>
+        <Title>Baixar aúdio tik tok</Title>
         <CustomTextField
           fullWidth
-          label="Insira o link do vídeo TikTok"
+          label="Insira o link do aúdio TikTok"
           variant="outlined"
           value={videoUrl}
           onChange={handleChange}
@@ -98,7 +98,7 @@ export default function TikTokAudioPage (): JSX.Element {
           pauseOnHover
           theme="light"
         />
-        <CardTutorial text='Como baixar audio do tik tok?' />
+        <CardTutorial text='Como baixar aúdio do tik tok?' />
       </ContainerBox>
     </ContentContainer>
   )

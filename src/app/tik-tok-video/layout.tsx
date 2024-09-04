@@ -15,7 +15,7 @@ export default function TikTokVideoLayout ({
     <>
       <Box style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
         <CustomHead
-          title='Vid Drop - Tik Tok - Vídeo'
+          title='Vid Drop - Vídeo'
           description={'Baixe vídeos do TikTok sem marca d\'água com o Vid Drop. Rápido, fácil e gratuito!'}
         />
         <Header />
