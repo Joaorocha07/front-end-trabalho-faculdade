@@ -7,7 +7,7 @@ export default function Home (): JSX.Element {
   const router = useRouter()
 
   useEffect(() => {
-    router.push('/tik-tok-video')
+    router.push('/home')
   }, [router])
 
   return (
