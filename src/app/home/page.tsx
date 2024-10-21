@@ -7,7 +7,7 @@ import Footer from './components/Footer'
 import Header from './components/Header'
 import Conteudo from './components/Conteudo'
 
-export default function Contato (): JSX.Element {
+export default function Home (): JSX.Element {
   return (
         <>
           <div className="App">

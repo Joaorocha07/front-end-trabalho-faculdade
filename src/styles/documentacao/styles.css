@@ -1,0 +1,37 @@
+@font-face {
+  font-family: "The SeasonsN";
+  src: url("../../fonts/TheSeasonsN.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "The Seasons";
+  src: url("../../fonts/TheSeasons.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+.content-bm {
+  flex-direction: column;
+  background-color: #525252;
+  margin-left: 300px;
+  opacity: 80%;
+  padding: 2% 0% 100% 0%;
+  text-align: center;
+  color: #fff;
+}
+.text-container{
+    background-color: white;
+    padding: 0px 12px;
+}
+.content-qm {
+  flex-direction: column;
+  background-color: #525252;
+  margin-left: 350px;
+  opacity: 80%;
+  padding: 2% 0% 100% 0%;
+  text-align: center;
+  color: #fff;
+}
+#qr-code-bm {
+  width: 300px;
+}

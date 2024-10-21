@@ -24,7 +24,7 @@ export default function Header (): JSX.Element {
                 id="text-nav"
                 sx={{ fontFamily: 'The Seasons, Arial, sans-serif' }}
             >
-                <a href="./" id="link-text">
+                <a href="./beat-match" id="link-text">
                     Beat Match
                 </a>
             </Typography>

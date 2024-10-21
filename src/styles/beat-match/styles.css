@@ -1,0 +1,18 @@
+.background-header {
+    border-radius: 60px;
+    position: absolute;
+    left: 5%;
+    bottom: 86%;
+    width: 90%;
+    opacity: 80%;
+}
+
+.background-footer{
+    border-radius: 60px;
+    position: absolute;
+    left: 5%;
+    top: 95%;
+    width: 90%;
+    opacity: 80%;
+    
+  }
