@@ -1,67 +1,33 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import React, { useState } from 'react'
+import React from 'react'
 
 import {
   Box,
   Button,
   TextField,
   Typography,
-  InputAdornment
+  InputAdornment,
+  IconButton
 } from '@mui/material'
+
+import { UseChat } from '@/hooks/beat-match/useChat'
 
 import Link from 'next/link'
 import SendIcon from '@mui/icons-material/Send'
-import SpotifyApi from '@/services/spotify/Chamada'
-
-interface IMessage {
-  timestamp: string | number | Date
-  text: string
-  fromUser: boolean
-  external_url?: string
-}
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 
 export default function Chat (): JSX.Element {
-  const [message, setMessage] = useState('')
-  const [messages, setMessages] = useState<IMessage[]>([])
-
-  const handleSendMessage = async (): Promise<void> => {
-    try {
-      const res = await SpotifyApi({ name: message })
-
-      console.log(res)
-
-      if (res != null) {
-        const currentTime = new Date().toISOString()
-        setMessages((prevMessages) => [
-          ...prevMessages,
-          { fromUser: true, text: message, timestamp: currentTime },
-          {
-            fromUser: false,
-            text: `Artista encontrado: ${res.name}`,
-            external_url: res.external_url,
-            timestamp: currentTime
-          }
-        ])
-      } else {
-        const currentTime = new Date().toISOString()
-        setMessages((prevMessages) => [
-          ...prevMessages,
-          { fromUser: true, text: message, timestamp: currentTime },
-          { fromUser: false, text: 'Artista não encontrado.', timestamp: currentTime }
-        ])
-      }
-    } catch (error) {
-      console.error('Erro:', error)
-      const currentTime = new Date().toISOString()
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        { fromUser: true, text: message, timestamp: currentTime }, // Mensagem do usuário
-        { fromUser: false, text: 'Erro ao buscar artista.', timestamp: currentTime } // Resposta do chat
-      ])
-    }
-
-    setMessage('')
-  }
+  const {
+    message,
+    messages,
+    currentIndex,
+    filteredMessages,
+    handleNext,
+    setMessage,
+    handlePrevious,
+    handleSendMessage
+  } = UseChat()
 
   return (
     <>
@@ -97,6 +63,16 @@ export default function Chat (): JSX.Element {
             padding: '10px'
           }}
         >
+          <Typography
+            variant="body2"
+            sx={{
+              color: 'white',
+              mb: 2,
+              textAlign: 'center'
+            }}
+          >
+            Pesquise suas músicas favoritas no nosso chat
+          </Typography>
           {messages.map((msg, index) => (
             <Box
               key={index}
@@ -161,7 +137,6 @@ export default function Chat (): JSX.Element {
             value={message}
             onChange={(e) => { setMessage(e.target.value) }}
             onKeyDown={(e) => {
-              // Verifica se a tecla pressionada é 'Enter'
               if (e.key === 'Enter' && message.trim() !== '') {
                 void handleSendMessage()
                 e.preventDefault()
@@ -193,6 +168,46 @@ export default function Chat (): JSX.Element {
           />
         </Box>
       </Box>
+
+      {/* QR Code Display */}
+      {filteredMessages.length > 0 && (
+        <Box
+          sx={{
+            position: 'fixed',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            textAlign: 'center',
+            backgroundColor: '#191414',
+            padding: 4,
+            borderRadius: 2,
+            boxShadow: 3,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center'
+          }}
+        >
+          <Typography variant="h6" sx={{ color: '#1DB954', mb: 2 }}>
+            {filteredMessages[currentIndex].text}
+          </Typography>
+          <img
+            src={filteredMessages[currentIndex].qrCodeUrl}
+            alt="QR Code Spotify"
+            style={{ width: '200px', height: '200px', marginBottom: '10px' }}
+          />
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <IconButton onClick={handlePrevious}>
+              <ArrowBackIosIcon sx={{ color: '#1DB954' }} />
+            </IconButton>
+            <Typography variant="body2" sx={{ color: '#fff', mx: 2 }}>
+              {currentIndex + 1} de {filteredMessages.length}
+            </Typography>
+            <IconButton onClick={handleNext}>
+              <ArrowForwardIosIcon sx={{ color: '#1DB954' }} />
+            </IconButton>
+          </Box>
+        </Box>
+      )}
     </>
   )
 }
